@@ -15,7 +15,7 @@ int f1(int T, vector<int> &A){ // number of solutions
     if(T < 0) return 0;
     int ans = 0;
     for(auto a : A){
-        ans += f1(T-a, A); 
+        ans = ans + f1(T-a, A); 
     }
     return ans;
 }
@@ -33,12 +33,14 @@ int f2(int T, vector<int> &A){ // minimum number of entities in solution
 int main(){
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-    vector<int> A;
-    int n;
-    int T;
+    
     int testcases;
-   // cin>>testcases;
-   // while(testcases){
+    cin>>testcases;
+    while(testcases--){
+        vector<int> A;
+        int n;
+        int T;
+        cout<<"TestCase:"<<testcases+1<<"\n";
         cin>>T;
         cin>>n;
         for(int i = 0 ; i<n ; i++){
@@ -48,9 +50,13 @@ int main(){
         }
        int ans1 = f(T, A);
        cout<<ans1<<"\n";
+       if(ans1){
         int ans2 = f1(T, A);
         cout<<ans2<<"\n";
-       int ans3 = f2(T, A);
-       cout<<ans3<<"\n";
-  //  }
+        int ans3 = f2(T, A);
+        cout<<ans3<<"\n";
+       }
+       else
+       cout<<0<<"\n"<<0<<"\n";
+    }
 }
