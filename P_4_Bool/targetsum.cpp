@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int f(int T, vector<int> &A){
+    if(T == 0) return 1;
+    if(T < 0 ) return 0;
+    int result = 0;
+    for(auto a : A){
+        result = result || f(T - a, A);
+    }
+    return result;
+}
+int f1(int T, vector<int> &A){ // number of solutions
+    if(T == 0) return 1;
+    if(T < 0) return 0;
+    int ans = 0;
+    for(auto a : A){
+        ans += f1(T-a, A); 
+    }
+    return ans;
+}
+
+int f2(int T, vector<int> &A){ // minimum number of entities in solution
+    if(T == 0 ) return 0;
+    if(T < 0 ) return 1e9;
+    int ans = 1e9;
+    for(auto a : A){
+        ans = min(ans, f2(T-a, A)+1);
+    }
+    return ans;
+}
+
+int main(){
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    vector<int> A;
+    int n;
+    int T;
+    int testcases;
+   // cin>>testcases;
+   // while(testcases){
+        cin>>T;
+        cin>>n;
+        for(int i = 0 ; i<n ; i++){
+            int e;
+            cin>>e;
+            A.push_back(e);
+        }
+       int ans1 = f(T, A);
+       cout<<ans1<<"\n";
+        int ans2 = f1(T, A);
+        cout<<ans2<<"\n";
+       int ans3 = f2(T, A);
+       cout<<ans3<<"\n";
+  //  }
+}
