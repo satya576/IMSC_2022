@@ -5,7 +5,7 @@ typedef vector<vector<int>> vvi;
 typedef vector<vector<vector<int>>> vvvi;
 
 
-// vi A;
+vi A;
 // vvi DP1(5, vi(6));
 // int i,n,k;
 vvvi DP(500, vvi(1000, vi(15, -1)));
@@ -30,8 +30,8 @@ int f_DP(int i, int n, int k, vvvi &DP){
 
     int Take = 0;
     if(A[i] <= n)
-        Take = f(i - 1, n - A[i], k - 1, DP);
-    int notTake = f(i-1, n, k, DP);
+        Take = f_DP(i - 1, n - A[i], k - 1, DP);
+    int notTake = f_DP(i-1, n, k, DP);
     return DP[i][n][k] = Take + notTake;
 }
 
@@ -39,7 +39,7 @@ int f_DP(int i, int n, int k, vvvi &DP){
 int main(){
     int n, k;
     cin>>n>>k;
-    vi A;
+    
     //// Exercise for finding prime numbers below n.
     //A.push_back(???);
 
