@@ -8,7 +8,7 @@ void DFS(int i, int j, int m, int n, vector<string> &Grid){
     vis[i][j] = 1;
     int dx[] = {-1, -1, 0,1, 1,1,0,-1};
     int dy[] = {0,1,1,1,0,-1,-1,-1};
-    for(int k = 0 ; k <8 ; k++){
+    for(int k = 0 ; k < 8 ; k++){
         int new_i = i + dx[k];
         int new_j = j + dy[k];
         if( new_i >= 0 && new_j >= 0 && new_i < m && new_j < n && Grid[new_i][new_j] == '@' && vis[new_i][new_j] == 0){
