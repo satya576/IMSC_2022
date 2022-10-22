@@ -34,7 +34,7 @@ int main(){
 
     int n, m;
     cin>>n>>m;
-    cout<<n<<" "<<m;
+    //cout<<n<<" "<<m;
     vector<string> Grid;
     for(int i = 0 ; i < n ; i++){
         string str;
@@ -43,13 +43,15 @@ int main(){
     }
     
     int count = 0;
-    // for(int i = 0 ; i < n ; i++){
-    //     for(int j = 0 ; j < m ; j++){
-    //         if(Grid[i][j] == '@' && vis[i][j] == 0 ){
-    //             count++;
-    //             BFS(i, j, Grid);
-    //         }
-    //     }
-    // }
+    for(int i = 0 ; i < n ; i++){
+        for(int j = 0 ; j < m ; j++){
+            if(Grid[i][j] == '@' && vis[i][j] == 0 ){
+                count++;
+                BFS(i, j, Grid);
+            }
+        }
+    }
+
+    cout<<count<<"\n";
 
 }
